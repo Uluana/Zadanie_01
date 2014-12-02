@@ -1,12 +1,13 @@
-USE Biblioteka;
+﻿/* 
+/* USE Biblioteka; */
 
-CREATE TABLE IF NOT EXISTS Biblioteka.Kniga (
+CREATE TABLE IF NOT EXISTS Kniga (
   Nazva VARCHAR(15) NOT NULL,
   id_Kniga INT NOT NULL,
   PRIMARY KEY (id_Kniga))
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS Biblioteka.Avtor (
+CREATE TABLE IF NOT EXISTS Avtor (
   id_Avtor INT NOT NULL,
   Name_avtora VARCHAR(15) NOT NULL,
   PRIMARY KEY (id_Avtor))
@@ -25,10 +26,10 @@ REPLACE INTO Biblioteka.Avtor (id_Avtor, Name_avtora) VALUES (4, 'Иванов')
 REPLACE INTO Biblioteka.Avtor (id_Avtor, Name_avtora) VALUES (5, 'Бевз');
 REPLACE INTO Biblioteka.Avtor (id_Avtor, Name_avtora) VALUES (6, 'Петрова');
 
-GRANT INSERT, UPDATE, DELETE ON Biblioteka.Kniga TO 'aaa'@'%' IDENTIFIED BY 'Kniga';
+GRANT INSERT, UPDATE, DELETE ON Kniga TO 'aaa'@'%' IDENTIFIED BY 'Kniga';
 FLUSH PRIVILEGES;
-GRANT INSERT, UPDATE, DELETE ON Biblioteka.Avtor TO 'aaa'@'%' IDENTIFIED BY 'Avtor';
+GRANT INSERT, UPDATE, DELETE ON Avtor TO 'aaa'@'%' IDENTIFIED BY 'Avtor';
 FLUSH PRIVILEGES;
 
-SELECT (Name_avtora OR Nazva) FROM Biblioteka.Kniga JOIN Biblioteka.Avtor;
+SELECT * FROM Kniga INNER JOIN Avtor ON Kniga.id = Avtor.id;
  
